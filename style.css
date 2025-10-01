@@ -1,0 +1,363 @@
+/* import fonts */
+@font-face {
+  font-family: 'Bebas';
+  src: url(fonts/BebasNeue-Regular.woff2);
+}
+/* variables */
+:root {
+
+  --radius: 0.5rem;
+  --gap: 1rem;
+  --font-size-base: 1rem;
+  --font-f: 'Bebas';
+
+  /* color kit */
+  --color-red: #FB3552;
+  --color-orange: #FF7F26;
+  --color-yellow: #FAD112;
+  --color-green: #23B14D;
+  --accent-light: #3acd66;
+  --accent-dark: #177e36;
+  --accent-hover: #1d9642;
+  --color-blue: #00A3E8;
+  --color-marine: #3F47CC;
+  --color-purple: #A349A3;
+  --color-pink: #EE3DA4;
+  --color-back-light: #F2F4FB;
+  --color-back-dark: #090504;
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  color: inherit;  
+}
+html, body {
+  width: 100%;
+}
+body {
+  overflow-x: hidden;    
+  height: max-content;
+  position: relative;
+  font-family: var(--font-f);
+}
+li, a {
+  list-style: none;
+  text-decoration: none;
+}
+
+.hidden {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container-principal {
+  position: relative;
+  display: grid;
+  grid-template-columns: 45% 65%;
+  grid-template-rows: auto auto 1fr;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 1rem;
+  overflow: hidden;
+}
+.container-principal .h1 {
+  grid-column: 1 / -1;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+.flowers .flower1, .flowers .flower2, .flowers .flower3, .flowers .flower4, .flowers .flower5,
+.flowers .flower6, .flowers .flower7, .flowers .flower8, .shapes .shape1 {
+  position: absolute;
+}
+/* Au titre */
+.flowers .flower6 {
+  top: -4%;
+  left: -6%;
+  width: 14%;
+  z-index: -1;
+}
+.flowers .flower7 {
+  top: 2%;
+  left: 22%;
+  width: 11%;
+  z-index: -1;
+}
+/* - */
+.flowers .flower1 {
+  top: 13%;
+  left: 38%;
+  width: 13%;
+  z-index: -1;
+}
+.flowers .flower2 {
+  bottom: -3%;
+  left: -6%;
+  width: 14%;
+  z-index: -1;
+}
+.flowers .flower3 {
+  top: 0%;
+  right: 5%;
+  width: 9%;
+  z-index: -1;
+}
+/* bleu */
+.flowers .flower4 {
+  top: 14%;
+  right: 50%;
+  width: 3%;
+  z-index: -1;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+}
+/* violette */
+.flowers .flower5 {
+  bottom: 13%;
+  left: 37%;
+  width: 3%;
+  z-index: -1;
+  transform: rotate(-12deg);
+}
+.flowers .flower8 {
+  top: 22%;
+  left: 6%;
+  width: 13%;
+  z-index: -1;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+  transform: rotate(15deg);
+}
+.shapes .shape1 {
+  bottom: -18%;
+  right: 5%;
+  width: 20%;
+  z-index: -1;
+  /* filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); */
+  transform: rotate(20deg);
+}
+  /* Au titre */
+  .flowers .flower6 > path {
+    fill: var(--color-marine);
+  }
+  .flowers .flower7 > path {
+    fill: var(--color-blue);
+  }
+  /* - */
+  .flowers .flower1 > path {
+    fill: var(--color-yellow);
+  }
+  .flowers .flower2 > path {
+    fill: var(--color-orange);
+  }
+  .flowers .flower3 > path {
+    fill: var(--color-pink);
+  }
+  /* bleu */
+  .flowers .flower4 > path {  
+    fill: var(--color-blue);
+  }
+  /* violette */
+  .flowers .flower5 > path {
+    fill: var(--color-purple);
+  }
+  .flowers .flower8 > path {
+    fill: var(--color-marine);
+  }
+  .flowers .flower4 > path.flower-shadow, .flowers .flower5 > path.flower-shadow {
+    fill: black;
+    opacity: 0.1;
+    transform: translate(0%, -1%) scale(1.06);
+  }
+  .flowers .flower8 > path.flower-shadow {
+    fill: black;
+    opacity: 0.05;
+    transform: translate(-2%, -1%) scale(1.03);
+  }
+  .shapes .shape1 > path {
+    fill: var(--color-red);    
+  }
+  img.h1 {
+    width: 25%;
+  }
+  .color-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255,255,255,0.7);
+    -webkit-backdrop-filter: blur(4px);
+    -moz-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .color-controls label {
+    font-size: 0.9rem;
+  }  
+  #colorPicker {
+    width: 65px;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  #primary_color::-webkit-color-swatch-wrapper {
+    padding: 0; 
+  }
+  #primary_color::-webkit-color-swatch {
+    border-radius: 15px;
+    border: none;
+  }
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 1rem;
+}
+.controls {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 0;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.controls input[type="file"] {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: -2px 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+.controls input[type="file"]::file-selector-button {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: none;
+  background-color: var(--color-blue);
+  color: var(--color-back-light);
+  box-shadow: -2px 2px 4px -1px rgba(0, 0, 0, 0.2);
+  transition: all .2s linear;
+  font-family: var(--font-f);
+  font-size: var(--font-size-base);
+  text-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.controls input[type="file"]::file-selector-button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.controls button, .download-btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-right: 2px solid rgb(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgb(0, 0, 0, 0.4);
+  box-shadow: inset -1px -1px 1px 1px var(--accent-hover), inset 1px 1px 1px 1.5px var(--accent-light), -2px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  background-color: var(--color-green);
+  color: var(--color-back-light);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: var(--font-f);
+  font-size: var(--font-size-base);
+  text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s linear;
+}
+.controls button:hover, .download-btn:hover {
+  border: none;
+  background-color: var(--accent-hover);
+  transform: translate(1px, 1px);
+  box-shadow: inset -1px -1px 2px 2px var(--accent-hover), inset -1px -1px 0px 2px var(--color-back-light), inset 1px 1px 2px 1.5px var(--accent-dark), inset 1px 1px 0px 1px var(--color-back-light);
+}
+.controls button:active {
+  box-shadow: inset -1px -1px 1px 1.5px var(--accent-dark), inset 1px 1px 1px 1.5px var(--color-green);
+}
+input:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.6);
+  transition: box-shadow 0.2s ease;
+}
+
+.code-block {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+/* texte: code svg */
+.code-header h2 {
+  font-size: 1.2rem;
+  color: var(--color-marine);
+}
+
+#svgCode {
+  background-color: var(--color-back-dark);
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--color-back-light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  overflow: auto;
+  max-height: 40vh;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+#svgCode::-webkit-scrollbar {
+  width: 14px;
+  border-radius: var(--radius);
+}
+#svgCode::-webkit-scrollbar-track {
+  background: var(--color-back-dark);
+  border-radius: 3px;
+}
+#svgCode::-webkit-scrollbar-thumb {
+  background: var(--color-blue);
+  border-radius: 3px;
+}
+@supports not selector(::-webkit-scrollbar) {
+  #svgCode {
+      scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+
+
+#svgContainer {
+  border-radius: var(--radius);
+  box-shadow: -2px 2px 4px -1px rgba(0, 0, 0, 0.2);
+  background: rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+#svgContainer svg {
+  max-width: 100%;
+  max-height: 100%;
+}
