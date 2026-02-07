@@ -1,4 +1,5 @@
 # PNG to SVG 
+Pour créer des formes simples et unicolors avec un code SVG réduit au maximum et une qualité minimum
 
 Visite le site ici:
   
